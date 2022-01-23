@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Welcome
+Exec=welcome
+Icon=rlxos
+Comment=rlxos Welcome app
+X-GNOME-Autostart-enabled=true
