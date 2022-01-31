@@ -17,6 +17,8 @@ const UI = `<?xml version="1.0" encoding="UTF-8"?>
       <object class="GtkStack" id="stack">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
+        <property name="transition_duration">300</property>
+        <property name="transition_type">slide-left-right</property>
         <child>
           <object class="GtkBox">
             <property name="visible">True</property>
@@ -31,7 +33,7 @@ const UI = `<?xml version="1.0" encoding="UTF-8"?>
                 <property name="can_focus">False</property>
                 <property name="margin_top">19</property>
                 <property name="margin_bottom">20</property>
-                <property name="pixel_size">128</property>
+                <property name="pixel_size">64</property>
                 <property name="icon_name">rlxos</property>
               </object>
               <packing>
@@ -61,11 +63,10 @@ const UI = `<?xml version="1.0" encoding="UTF-8"?>
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="margin_top">1</property>
-                <property name="label" translatable="yes">Thanks for choosing rlxos GNU/Linux</property>
-                <attributes>
-                  <attribute name="weight" value="medium"/>
-                  <attribute name="scale" value="1.2"/>
-                </attributes>
+                <property name="label" translatable="yes">&lt;big&gt;Thanks for choosing rlxos GNU/Linux&lt;/big&gt;
+click on 'Next' button to start the welcome tour</property>
+                <property name="use_markup">True</property>
+                <property name="justify">center</property>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -88,7 +89,7 @@ const UI = `<?xml version="1.0" encoding="UTF-8"?>
               <object class="GtkImage">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="margin_top">12</property>
+                <property name="margin_top">25</property>
                 <property name="margin_bottom">5</property>
                 <property name="pixel_size">64</property>
                 <property name="icon_name">software-update-available-symbolic</property>
@@ -179,6 +180,7 @@ const UI = `<?xml version="1.0" encoding="UTF-8"?>
                             <property name="label" translatable="yes">First stable release of rlxos that can 
 be installed on real hardware. 
 However it still have some issues</property>
+                            <property name="justify">center</property>
                             <property name="wrap">True</property>
                           </object>
                           <packing>
@@ -230,6 +232,7 @@ However it still have some issues</property>
 package management tool to install
 packages that can't be distributed as
 AppImage</property>
+                            <property name="justify">center</property>
                             <property name="wrap">True</property>
                           </object>
                           <packing>
@@ -280,6 +283,7 @@ AppImage</property>
                             <property name="label" translatable="yes">Just like appimages, you can now 
 update or replace your system just
 by replacing the system image</property>
+                            <property name="justify">center</property>
                             <property name="wrap">True</property>
                           </object>
                           <packing>
@@ -331,6 +335,7 @@ by replacing the system image</property>
 language that helps your to 
 automate your daily task
 (experimental)</property>
+                            <property name="justify">center</property>
                             <property name="wrap">True</property>
                           </object>
                           <packing>
@@ -381,6 +386,7 @@ automate your daily task
                             <property name="label" translatable="yes">A untrained virtual assistant to help
 you out in your daily tasks, train it
 and use it.</property>
+                            <property name="justify">center</property>
                             <property name="wrap">True</property>
                           </object>
                           <packing>
@@ -423,7 +429,7 @@ and use it.</property>
               <object class="GtkImage">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="margin_top">12</property>
+                <property name="margin_top">25</property>
                 <property name="margin_bottom">5</property>
                 <property name="pixel_size">64</property>
                 <property name="icon_name">user-desktop-symbolic</property>
@@ -472,8 +478,7 @@ and use it.</property>
               <object class="GtkImage">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="margin_top">9</property>
-                <property name="stock">gtk-missing-image</property>
+                <property name="pixbuf">assets/looks.svg</property>
               </object>
               <packing>
                 <property name="expand">True</property>
@@ -497,7 +502,7 @@ and use it.</property>
               <object class="GtkImage">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="margin_top">12</property>
+                <property name="margin_top">25</property>
                 <property name="margin_bottom">5</property>
                 <property name="pixel_size">64</property>
                 <property name="icon_name">gnome-software-symbolic</property>
@@ -774,7 +779,7 @@ flatpak packages</property>
               <object class="GtkImage">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="margin_top">12</property>
+                <property name="margin_top">25</property>
                 <property name="margin_bottom">5</property>
                 <property name="pixel_size">64</property>
                 <property name="icon_name">help-symbolic</property>
@@ -1056,159 +1061,6 @@ here</property>
           <object class="GtkBox">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="orientation">vertical</property>
-            <child>
-              <object class="GtkImage">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="margin_top">12</property>
-                <property name="margin_bottom">5</property>
-                <property name="pixel_size">64</property>
-                <property name="icon_name">dialog-information-symbolic</property>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="position">0</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkLabel">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="margin_top">2</property>
-                <property name="label" translatable="yes">Help improve rlxos</property>
-                <attributes>
-                  <attribute name="weight" value="heavy"/>
-                  <attribute name="scale" value="1.5"/>
-                </attributes>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="position">1</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkLabel">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="margin_top">2</property>
-                <property name="label" translatable="yes">You can help rlxos for better support for hardware</property>
-                <attributes>
-                  <attribute name="weight" value="normal"/>
-                  <attribute name="scale" value="1.2"/>
-                </attributes>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="position">2</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkBox">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="halign">center</property>
-                <property name="valign">center</property>
-                <property name="margin_bottom">150</property>
-                <property name="orientation">vertical</property>
-                <child>
-                  <object class="GtkLabel">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="label" translatable="yes">Optional</property>
-                    <attributes>
-                      <attribute name="weight" value="ultrabold"/>
-                      <attribute name="scale" value="1.2"/>
-                    </attributes>
-                  </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">0</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkLabel">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="margin_top">7</property>
-                    <property name="margin_bottom">13</property>
-                    <property name="label" translatable="yes">We have a very small team thats why its not possible for us
-to test rlxos on every hardware. You can submit your system 
-specifications that helps us to  imporve hardware support for rlxos</property>
-                    <property name="justify">center</property>
-                    <property name="wrap">True</property>
-                  </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">1</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkButtonBox">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="layout_style">spread</property>
-                    <child>
-                      <object class="GtkButton">
-                        <property name="label" translatable="yes">View Data</property>
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="receives_default">True</property>
-                        <signal name="clicked" handler="onViewDataClicked" swapped="no"/>
-                      </object>
-                      <packing>
-                        <property name="expand">True</property>
-                        <property name="fill">True</property>
-                        <property name="position">0</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkButton">
-                        <property name="label" translatable="yes">Submit</property>
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="receives_default">True</property>
-                        <signal name="clicked" handler="onSubmitClicked" swapped="no"/>
-                        <style>
-                          <class name="suggested-action"/>
-                        </style>
-                      </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">1</property>
-                      </packing>
-                    </child>
-                  </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">2</property>
-                  </packing>
-                </child>
-              </object>
-              <packing>
-                <property name="expand">True</property>
-                <property name="fill">True</property>
-                <property name="position">3</property>
-              </packing>
-            </child>
-          </object>
-          <packing>
-            <property name="name">page5</property>
-            <property name="title" translatable="yes">page5</property>
-            <property name="position">5</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkBox">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
             <property name="halign">center</property>
             <property name="valign">center</property>
             <property name="margin_bottom">50</property>
@@ -1271,7 +1123,7 @@ specifications that helps us to  imporve hardware support for rlxos</property>
           <packing>
             <property name="name">page6</property>
             <property name="title" translatable="yes">page6</property>
-            <property name="position">6</property>
+            <property name="position">5</property>
           </packing>
         </child>
       </object>
@@ -1303,6 +1155,15 @@ specifications that helps us to  imporve hardware support for rlxos</property>
           <packing>
             <property name="pack_type">end</property>
             <property name="position">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkImage">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+          </object>
+          <packing>
+            <property name="position">2</property>
           </packing>
         </child>
       </object>

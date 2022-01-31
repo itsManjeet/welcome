@@ -15,7 +15,7 @@ func main() {
 	HOME := os.Getenv("HOME")
 	doneFile := path.Join(HOME, ".config", "welcome")
 
-	if _, err := os.Stat(doneFile); err == nil {
+	if _, err := os.Stat(doneFile); err == nil && len(os.Getenv("FORCE_START")) == 0 {
 		return
 	}
 

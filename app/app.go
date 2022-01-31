@@ -1,9 +1,7 @@
 package app
 
 import (
-	"bytes"
 	"log"
-	"net/http"
 	"os/exec"
 
 	"github.com/gotk3/gotk3/glib"
@@ -54,38 +52,40 @@ func New(builder *gtk.Builder) (*Window, error) {
 			window.openUrl("https://www.youtube.com/channel/UC2Dd2tHneeaxvhqz_IaO9bw")
 		},
 
-		"onViewDataClicked": func() {
-			dialog, err := gtk.WindowNew(gtk.WINDOW_TOPLEVEL)
-			if err != nil {
-				log.Fatal(err)
-			}
-			dialog.SetTitle("System Information")
+		// "onViewDataClicked": func() {
+		// 	dialog, err := gtk.WindowNew(gtk.WINDOW_TOPLEVEL)
+		// 	if err != nil {
+		// 		log.Fatal(err)
+		// 	}
+		// 	dialog.SetTitle("System Information")
 
-			textView, _ := gtk.TextViewNew()
-			textView.SetMonospace(true)
-			dialog.Add(textView)
+		// 	textView, _ := gtk.TextViewNew()
+		// 	textView.SetEditable(false)
+		// 	textView.SetCursorVisible(false)
+		// 	textView.SetMonospace(true)
+		// 	dialog.Add(textView)
 
-			buffer, _ := textView.GetBuffer()
-			buffer.SetText(window.systemInformation())
-			dialog.ShowAll()
-		},
-		"onSubmitClicked": func() {
-			jsonString := []byte(`{"data": "` + window.systemInformation() + `"}`)
-			req, err := http.NewRequest("POST", URL, bytes.NewBuffer(jsonString))
-			if err != nil {
-				window.showError("failed to create new POST request " + err.Error())
-				return
-			}
+		// 	buffer, _ := textView.GetBuffer()
+		// 	buffer.SetText(window.systemInformation())
+		// 	dialog.ShowAll()
+		// },
+		// "onSubmitClicked": func() {
+		// 	jsonString := []byte(`{"data": "` + window.systemInformation() + `"}`)
+		// 	req, err := http.NewRequest("POST", URL, bytes.NewBuffer(jsonString))
+		// 	if err != nil {
+		// 		window.showError("failed to create new POST request " + err.Error())
+		// 		return
+		// 	}
 
-			req.Header.Set("Content-Type", "application/json")
-			client := &http.Client{}
-			resp, err := client.Do(req)
-			if err != nil {
-				window.showError("failed to submit POST request " + err.Error())
-				return
-			}
-			defer resp.Body.Close()
-		},
+		// 	req.Header.Set("Content-Type", "application/json")
+		// 	client := &http.Client{}
+		// 	resp, err := client.Do(req)
+		// 	if err != nil {
+		// 		window.showError("failed to submit POST request " + err.Error())
+		// 		return
+		// 	}
+		// 	defer resp.Body.Close()
+		// },
 		"onEnjoyClicked": func() {
 			err := exec.Command("gnome-terminal", "-e", "pkexec update-grub").Run()
 			if err != nil {
@@ -148,14 +148,14 @@ func (win *Window) openUrl(url string) {
 	exec.Command("xdg-open", url).Start()
 }
 
-func (win *Window) systemInformation() string {
-	data, err := exec.Command("inxi", "-F", "-c", "0").Output()
-	if err != nil {
-		return err.Error()
-	}
+// func (win *Window) systemInformation() string {
+// 	data, err := exec.Command("inxi", "-F", "-c", "0").Output()
+// 	if err != nil {
+// 		return err.Error()
+// 	}
 
-	return string(data)
-}
+// 	return string(data)
+// }
 
 func (win *Window) showError(mesg string) {
 	dialog := gtk.MessageDialogNew(&win.Window, gtk.DIALOG_DESTROY_WITH_PARENT, gtk.MESSAGE_ERROR, gtk.BUTTONS_CLOSE, mesg)
