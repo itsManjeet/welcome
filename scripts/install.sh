@@ -12,4 +12,4 @@ sed -i "s|assets/looks.svg|/usr/share/welcome/looks.svg|g" app/ui.go
 go build -o ${DESTDIR}/usr/bin/welcome main.go
 
 cp assets/*.png ${DESTDIR}/usr/share/pixmaps/
-install -v -D -m 0755 assets/look.svg -t ${DESTDIR}/usr/share/welcome/
+install -v -D -m 0755 assets/looks.svg -t ${DESTDIR}/usr/share/welcome/
