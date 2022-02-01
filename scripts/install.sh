@@ -3,7 +3,7 @@
 DESTDIR=${DESTDIR:-'/'}
 
 mkdir -p ${DESTDIR}/usr/{bin,share/pixmaps}
-mkdir -p ${DESTDIR}/etc/autostart/
+mkdir -p ${DESTDIR}/etc/xdg/autostart/
 
 cp assets/welcome.desktop ${DESTDIR}/etc/autostart/
 ./scripts/genui.sh
